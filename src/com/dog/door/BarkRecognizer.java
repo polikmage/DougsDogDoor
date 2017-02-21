@@ -11,11 +11,14 @@ public class BarkRecognizer {
         this.door = door;
 
     }
-    public void recognize(String bark){
+    public void recognize(Bark bark){
 
-        System.out.println("Heard a right bark");
-        door.open();
-
+        if(bark.equals(door.getAllowedBark())) {
+            System.out.println("Heard a right bark");
+            door.open();
+        }else{
+            System.out.println("This was different dog");
+        }
 
 
 
