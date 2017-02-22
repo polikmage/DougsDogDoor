@@ -18,7 +18,7 @@ public class Bark {
         if(bark instanceof Bark)
         {
             Bark otherBark = (Bark)bark;
-            if(otherBark.getSound().equalsIgnoreCase(this.sound)){
+            if(this.sound.equalsIgnoreCase(otherBark.getSound())){
                 return true;
             }
             return false;
