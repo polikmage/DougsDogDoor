@@ -13,7 +13,7 @@ public class BarkRecognizer {
     }
     public void recognize(Bark bark){
 
-        if(bark.equals(door.getAllowedBark())) {
+        if(bark.equals(door.getAllowedBarks())) {
             System.out.println("Heard a right bark");
             door.open();
         }else{
