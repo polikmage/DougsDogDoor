@@ -1,5 +1,7 @@
 package com.dog.door;
 
+import java.util.List;
+
 /**
  * Created by Mara on 19.2.2017.
  */
@@ -13,12 +15,16 @@ public class BarkRecognizer {
     }
     public void recognize(Bark bark){
 
-        if(bark.equals(door.getAllowedBarks())) {
-            System.out.println("Heard a right bark");
-            door.open();
-        }else{
-            System.out.println("This was different dog");
+        List<Bark> allowedBarks = door.getAllowedBarks();
+        for (Bark allowedBark:allowedBarks) {
+            if (bark.equals(allowedBark)) {
+                System.out.println("Bark recognizer: Heard " +  "\"" + bark.getSound() + "\"");
+                door.open();
+                return;
+            }
+
         }
+        System.out.println("Bark recognizer: Heard " +  "\"" + bark.getSound() + "\"");
 
 
 

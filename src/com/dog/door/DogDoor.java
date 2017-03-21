@@ -1,5 +1,7 @@
 package com.dog.door;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -8,19 +10,22 @@ import java.util.TimerTask;
  */
 public class DogDoor {
     private boolean open;
-    private Bark allowedBarks;
+    private List<Bark> allowedBarks;
 
-    public void setAllowedBarks(Bark allowedBarks) {
-        this.allowedBarks = allowedBarks;
+    public void addAllowedBark(Bark allowedBark)
+    {
+        allowedBarks.add(allowedBark);
     }
 
-    public Bark getAllowedBarks() {
+    public List<Bark> getAllowedBarks() {
 
         return allowedBarks;
     }
 
     public DogDoor() {
+
         this.open = false;
+        allowedBarks = new ArrayList<>();
     }
     public void open(){
         System.out.println("The dog door opens");

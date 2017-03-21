@@ -3,6 +3,7 @@ package com.test;
 import com.dog.door.Bark;
 import com.dog.door.BarkRecognizer;
 import com.dog.door.DogDoor;
+import com.dog.door.Remote;
 
 /**
  * Created by Mara on 19.2.2017.
@@ -11,15 +12,18 @@ public class DogDoorSimulator {
 
     public static void main(String[] args) {
         DogDoor door = new DogDoor();
-        door.setAllowedBarks(new Bark(("Woof")));
-        //Remote remote = new Remote(door);
+        door.addAllowedBark(new Bark(("rowlf")));
+        door.addAllowedBark(new Bark(("rooowlf")));
+        door.addAllowedBark(new Bark(("rawlf")));
+        door.addAllowedBark(new Bark(("woof")));
+        Remote remote = new Remote(door);
 
         BarkRecognizer barkRecognizer = new BarkRecognizer(door);
 
 
 
         System.out.println("Fido barks to go outside ");
-        Bark bark = new Bark("Woof");
+        Bark bark = new Bark("rowlf");
         //remote.pressButton();
         barkRecognizer.recognize(bark);
 
@@ -35,9 +39,14 @@ public class DogDoorSimulator {
         System.out.println("\n Some dogs barking/... ");
         barkRecognizer.recognize(new Bark("Weeee"));
 
-            //System.out.println("\n Fido is inside ");
 
-        barkRecognizer.recognize(bark);
+        try {
+            Thread.currentThread().sleep(5000);
+        }catch(InterruptedException e){ }
+
+        System.out.println("\n Fido starts barking ");
+
+        barkRecognizer.recognize(new Bark("rooowlf"));
         System.out.println("\n Fido went inside ");
 
 
